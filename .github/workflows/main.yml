@@ -2,24 +2,28 @@ name: Get Feed
 
 on:
   schedule:
-    - cron: '0 4 * * *' # Runs at 12:00 Beijing Time (UTC+8)
+    - cron: '0 4 * * *' # 12:00 Beijing Time (UTC+8)
   workflow_dispatch:
 
 jobs:
   get-feed:
     runs-on: ubuntu-latest
+
     env:
       NOTION_API_TOKEN: ${{ secrets.NOTION_API_TOKEN }}
       NOTION_READER_DATABASE_ID: ${{ secrets.NOTION_READER_DATABASE_ID }}
       NOTION_FEEDS_DATABASE_ID: ${{ secrets.NOTION_FEEDS_DATABASE_ID }}
-      RUN_FREQUENCY: 86400 # in seconds
+      RUN_FREQUENCY: 86400
+
     steps:
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: 14
+          node-version: 18
 
       - name: Update Notion Feed
         run: |
-          curl -o index.js https://raw.githubusercontent.com/ravgeetdhillon/notion-feeder/build/dist/index.js
+          curl -fsSL \
+            https://raw.githubusercontent.com/lieeew/notion-feeder/build/dist/index.js \
+            -o index.js
           node index.js
