@@ -8,37 +8,25 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - name: Set up Repository
-        uses: actions/checkout@v2
-        with:
-          ref: master
 
-      - name: Set up Node
-        uses: actions/setup-node@v2
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
           node-version: 18
+          cache: npm
 
-      - name: Cache NPM Dependencies
-        id: cache-npm-dependencies
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node_modules-
-
-      - name: Install NPM Dependencies if not cached
-        if: steps.cache-npm-dependencies.outputs.cache-hit != 'true'
-        run: |
-          npm install
+      - name: Install Dependencies
+        run: npm ci
 
       - name: Build Project
-        run: |
-          npm run build-prod
+        run: npm run build-prod
 
       - name: Upload Artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: dist
           path: dist
@@ -46,24 +34,25 @@ jobs:
   commit-build:
     needs: build
     runs-on: ubuntu-latest
+
     steps:
-      - name: Set up Repository
-        uses: actions/checkout@v2
+      - name: Checkout build branch
+        uses: actions/checkout@v4
         with:
           ref: build
 
-      - name: Download Build
-        uses: actions/download-artifact@v2
+      - name: Download Artifacts
+        uses: actions/download-artifact@v4
         with:
           name: dist
           path: dist
 
       - name: Commit and Push
         run: |
-          if [ $(git status dist --porcelain=v1 2>/dev/null | wc -l) != "0" ] ; then
+          if [ -n "$(git status dist --porcelain)" ]; then
             git config user.name "GitHub Actions"
-            git config user.email noreply@github.com
+            git config user.email "noreply@github.com"
             git add dist
-            git commit -m "chore: updated build"
+            git commit -m "chore: update build output"
             git push origin HEAD --force
           fi
