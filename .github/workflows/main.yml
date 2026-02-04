@@ -16,14 +16,20 @@ jobs:
       RUN_FREQUENCY: 86400
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 18
+          cache: 'npm'
 
-      - name: Update Notion Feed
-        run: |
-          curl -fsSL \
-            https://raw.githubusercontent.com/lieeew/notion-feeder/build/dist/index.js \
-            -o index.js
-          node index.js
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Run feed
+        run: npm run feed
