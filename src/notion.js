@@ -133,3 +133,37 @@ export async function deleteOldUnreadFeedItemsFromNotion() {
     }
   }
 }
+
+export async function addFeedToNotion({ title, feedUrl }) {
+  const notion = new Client({
+    auth: NOTION_API_TOKEN,
+    logLevel,
+  });
+
+  try {
+    await notion.pages.create({
+      parent: {
+        database_id: NOTION_FEEDS_DATABASE_ID,
+      },
+      properties: {
+        Title: {
+          title: [
+            {
+              text: {
+                content: title,
+              },
+            },
+          ],
+        },
+        Link: {
+          url: feedUrl,
+        },
+        Enabled: {
+          checkbox: true,
+        },
+      },
+    });
+  } catch (err) {
+    console.error(err);
+  }
+}

@@ -6,7 +6,8 @@
 
 ---
 
-If you love this product and value my time, consider [sending some love](https://paypal.me/ravgeetdhillon) to me. This will enable me to work on more projects like these in the future.
+If you love this product and value my time, consider [sending some love](https://paypal.me/ravgeetdhillon) to me. This
+will enable me to work on more projects like these in the future.
 
 [![PayPal Donate Button](https://images.squarespace-cdn.com/content/v1/55f62c4ce4b02545cc6ee94f/1558204823259-CQ0YNKZEHP7W5LO64PBU/paypal-donate-button-1.PNG?format=300w)](https://paypal.me/ravgeetdhillon)
 
@@ -42,11 +43,15 @@ Different views of accessing Unread, Starred feed items.
 
 ## Setup
 
-1. Create a new [Notion Integration](https://www.notion.so/my-integrations) and copy the secret code which you'll use as `NOTION_API_TOKEN` in Step 4.
+1. Create a new [Notion Integration](https://www.notion.so/my-integrations) and copy the secret code which you'll use as
+   `NOTION_API_TOKEN` in Step 4.
 
-2. Duplicate this [template](https://ravsamhq.notion.site/Feeder-fa2aa54827fa42c2af1eb25c7a45a408) to your Notion workspace.
+2. Duplicate this [template](https://ravsamhq.notion.site/Feeder-fa2aa54827fa42c2af1eb25c7a45a408) to your Notion
+   workspace.
 
-3. Once the template is available on your Notion Workspace, open the **Reader** database. Click the three-button page menu in the top right corner **...** _> Add connections_ and search the Notion integration you created in Step 1 and Click **Invite**. Do the same for the **Feeds** database.
+3. Once the template is available on your Notion Workspace, open the **Reader** database. Click the three-button page
+   menu in the top right corner **...** _> Add connections_ and search the Notion integration you created in Step 1 and
+   Click **Invite**. Do the same for the **Feeds** database.
 
 4. Fork this GitHub repository and once forking is complete, go to your forked GitHub repository.
 
@@ -62,13 +67,16 @@ Different views of accessing Unread, Starred feed items.
    NOTION_FEEDS_DATABASE_ID
    ```
 
-   > To find your database id, visit your database on Notion. You'll get a URL like this: https://www.notion.so/{workspace_name}/{database_id}?v={view_id}. For example, if your URL looks like this: https://www.notion.so/abc/xyz?v=123, then `xyz` is your database ID.
+   > To find your database id, visit your database on Notion. You'll get a URL like
+   this: https://www.notion.so/{workspace_name}/{database_id}?v={view_id}. For example, if your URL looks like
+   this: https://www.notion.so/abc/xyz?v=123, then `xyz` is your database ID.
 
 8. Delete the [release workflow file](.github/workflows/release.yml) as it is only required in the original repository.
 
 9. That's it. Now every day, your feed will be updated at 12:30 UTC.
 
-**Note**: You can change the time at which the script runs from [here](.github/workflows/main.yml#L5) and the frequency of running from [here](.github/workflows/main.yml#L15).
+**Note**: You can change the time at which the script runs from [here](.github/workflows/main.yml#L5) and the frequency
+of running from [here](.github/workflows/main.yml#L15).
 
 ## Development
 
