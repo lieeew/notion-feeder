@@ -1,8 +1,4 @@
-[![Release](https://github.com/ravgeetdhillon/notion-feeder/actions/workflows/release.yml/badge.svg)](https://github.com/ravgeetdhillon/notion-feeder/actions/workflows/release.yml)
-[![Get Feed](https://github.com/ravgeetdhillon/notion-feeder/actions/workflows/main.yml/badge.svg)](https://github.com/ravgeetdhillon/notion-feeder/actions/workflows/main.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-<a href="https://www.producthunt.com/posts/notion-feeder?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-notion-feeder" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=316289&theme=light" alt="Notion Feeder - Convert Notion to a Feed Reader | Product Hunt" style="width: 166px; height: 36px;" width="166" height="36" /></a>
+[![Get Feed](https://github.com/lieeew/notion-feeder/actions/workflows/main.yml/badge.svg)](https://github.com/lieeew/notion-feeder/actions/workflows/main.yml)
 
 ---
 
